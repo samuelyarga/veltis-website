@@ -19,7 +19,26 @@ import { CommonModule } from '@angular/common';
       @for (f of features; track f.title) {
         <div class="feature-card" [class.featured]="f.featured">
           <div class="feature-icon-wrap" [style.background]="f.iconBg">
-            <span class="feature-icon">{{ f.icon }}</span>
+            <span class="feature-icon">
+              @if (f.icon === 'sales') {
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              }
+              @if (f.icon === 'box') {
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              }
+              @if (f.icon === 'handshake') {
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              }
+              @if (f.icon === 'briefcase') {
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg>
+              }
+              @if (f.icon === 'wallet') {
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M16 12h4a2 2 0 0 1 0 4h-4a2 2 0 0 1 0-4z"/></svg>
+              }
+              @if (f.icon === 'book') {
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              }
+            </span>
           </div>
           <h3 class="feature-title">{{ f.title }}</h3>
           <p class="feature-desc">{{ f.desc }}</p>
@@ -35,7 +54,10 @@ import { CommonModule } from '@angular/common';
             }
           </ul>
           @if (f.featured) {
-            <div class="featured-badge">⭐ Populaire</div>
+            <div class="featured-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Populaire
+            </div>
           }
         </div>
       }
@@ -53,7 +75,11 @@ import { CommonModule } from '@angular/common';
 
     <!-- Bannière local -->
     <div class="local-banner">
-      <div class="local-icon">📡</div>
+      <div class="local-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:#67e8f9">
+          <path d="M1 6l5 5 5-5 5 5 5-5"/><path d="M12 12v8"/><circle cx="12" cy="22" r="1"/>
+        </svg>
+      </div>
       <div class="local-content">
         <div class="local-title">Fonctionne en local, sans internet</div>
         <div class="local-desc">
@@ -144,7 +170,7 @@ import { CommonModule } from '@angular/common';
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 1.25rem;
     }
-    .feature-icon { font-size: 1.625rem; }
+    .feature-icon { display: flex; align-items: center; }
     .feature-title {
       font-size: 1.125rem; font-weight: 700;
       color: #fff; margin-bottom: 0.625rem;
@@ -166,8 +192,9 @@ import { CommonModule } from '@angular/common';
       background: linear-gradient(135deg, #6366f1, #8b5cf6);
       border-radius: 50px;
       font-size: 0.72rem; font-weight: 700; color: #fff;
+      display: flex; align-items: center; gap: 0.35rem;
     }
-    .modules-section { margin-top: 3rem; text-align: center; }
+    .local-icon { flex-shrink: 0; display: flex; align-items: center; }
     .modules-label { font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-bottom: 1.25rem; }
     .modules-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.625rem; }
     .module-pill {
@@ -187,7 +214,7 @@ import { CommonModule } from '@angular/common';
       border: 1px solid rgba(6,182,212,0.25);
       border-radius: 20px; flex-wrap: wrap;
     }
-    .local-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .local-icon { flex-shrink: 0; display: flex; align-items: center; }
     .local-content { flex: 1; min-width: 200px; }
     .local-title { font-size: 1.125rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
     .local-desc { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
@@ -207,42 +234,42 @@ import { CommonModule } from '@angular/common';
 export class FeaturesComponent {
   features = [
     {
-      icon: '🛍️', title: 'Ventes & Caisse',
+      icon: 'sales', title: 'Ventes & Caisse',
       iconBg: 'rgba(99,102,241,0.15)',
       desc: 'Gérez vos ventes au comptoir avec une caisse rapide ultra-réactive. Scanner, ticket, encaissement en quelques secondes.',
       items: ['Caisse rapide avec scanner code-barres', 'Factures clients professionnelles', 'Suivi des encaissements', 'Statistiques en temps réel'],
       featured: true
     },
     {
-      icon: '📦', title: 'Stocks & Inventaires',
+      icon: 'box', title: 'Stocks & Inventaires',
       iconBg: 'rgba(6,182,212,0.15)',
       desc: 'Double stock (magasin + boutique), alertes automatiques, transferts et inventaires avec validation.',
       items: ['Stock magasin et boutique séparés', 'Alertes de rupture automatiques', 'Transferts inter-sites', 'Inventaires périodiques'],
       featured: false
     },
     {
-      icon: '🤝', title: 'Clients & Fournisseurs',
+      icon: 'handshake', title: 'Clients & Fournisseurs',
       iconBg: 'rgba(34,197,94,0.15)',
       desc: 'Centralisez toutes vos relations commerciales. Historiques, relances, commandes fournisseurs.',
       items: ['Fiche client complète', 'Historique des achats', 'Commandes fournisseurs', 'Suivi des paiements'],
       featured: false
     },
     {
-      icon: '👨‍💼', title: 'Ressources Humaines',
+      icon: 'briefcase', title: 'Ressources Humaines',
       iconBg: 'rgba(245,158,11,0.15)',
       desc: 'Gérez vos employés, générez les bulletins de paie avec calcul CNSS et IUTS automatique.',
       items: ['Fiches employés complètes', 'Bulletins de paie automatiques', 'Calcul CNSS & IUTS', 'Simulation de paie'],
       featured: false
     },
     {
-      icon: '💸', title: 'Dépenses & Budgets',
+      icon: 'wallet', title: 'Dépenses & Budgets',
       iconBg: 'rgba(239,68,68,0.15)',
       desc: 'Suivez vos charges, créez des budgets, programmez les dépenses récurrentes.',
       items: ['Catégories de dépenses', 'Dépenses récurrentes', 'Budgets par catégorie', 'Statistiques détaillées'],
       featured: false
     },
     {
-      icon: '📊', title: 'Comptabilité SYSCOHADA',
+      icon: 'book', title: 'Comptabilité SYSCOHADA',
       iconBg: 'rgba(139,92,246,0.15)',
       desc: 'Plan comptable SYSCOHADA complet, écritures automatiques, bilan, compte de résultat et balance.',
       items: ['106 comptes SYSCOHADA', 'Écritures automatiques', 'Bilan & compte de résultat', 'Grand livre & balance'],
@@ -250,5 +277,5 @@ export class FeaturesComponent {
     }
   ];
 
-  modules = ['📈 Tableau de bord', '🔐 Gestion des rôles', '💳 Comptes & transactions', '📋 Commandes fournisseurs', '🔄 Transferts de stock', '🧾 Factures proforma', '📱 Mobile responsive'];
+  modules = ['Tableau de bord', 'Gestion des rôles', 'Comptes & transactions', 'Commandes fournisseurs', 'Transferts de stock', 'Factures proforma', 'Mobile responsive'];
 }

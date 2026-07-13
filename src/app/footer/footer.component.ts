@@ -45,7 +45,7 @@ import { CommonModule } from '@angular/common';
 
     <div class="footer-bottom">
       <p>© 2026 Veltis. Tous droits réservés.</p>
-      <p class="footer-love">Fait avec ❤️ pour les entreprises africaines</p>
+      <p class="footer-love">Fait avec expertise pour les entreprises africaines</p>
     </div>
   </div>
 </footer>

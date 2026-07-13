@@ -79,7 +79,17 @@ import { CommonModule } from '@angular/common';
           <div class="kpi-row">
             @for (kpi of kpis; track kpi.label) {
               <div class="kpi-card" [style.--c]="kpi.color">
-                <div class="kpi-icon">{{ kpi.icon }}</div>
+              <div class="kpi-icon">
+                  @if (kpi.icon === 'revenue') {
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  }
+                  @if (kpi.icon === 'sales') {
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                  }
+                  @if (kpi.icon === 'users') {
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  }
+                </div>
                 <div class="kpi-val">{{ kpi.value }}</div>
                 <div class="kpi-lab">{{ kpi.label }}</div>
                 <div class="kpi-trend" [class.up]="kpi.up">{{ kpi.trend }}</div>
@@ -110,14 +120,22 @@ import { CommonModule } from '@angular/common';
       </div>
       <!-- Floating cards -->
       <div class="float-card float-1">
-        <span class="float-icon">💰</span>
+        <span class="float-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#22c55e">
+            <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </span>
         <div>
           <div class="float-val">+2 350 000 XOF</div>
           <div class="float-lab">Chiffre d'affaires</div>
         </div>
       </div>
       <div class="float-card float-2">
-        <span class="float-icon">📦</span>
+        <span class="float-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#6366f1">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </span>
         <div>
           <div class="float-val">847 articles</div>
           <div class="float-lab">En stock</div>
@@ -270,7 +288,7 @@ import { CommonModule } from '@angular/common';
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: var(--c, #6366f1);
     }
-    .kpi-icon { font-size: 1.25rem; margin-bottom: 0.25rem; }
+    .kpi-icon { display: flex; margin-bottom: 0.25rem; }
     .kpi-val { font-size: 1rem; font-weight: 800; color: #fff; }
     .kpi-lab { font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
     .kpi-trend { font-size: 0.65rem; color: #22c55e; font-weight: 600; margin-top: 2px; }
@@ -303,7 +321,7 @@ import { CommonModule } from '@angular/common';
     }
     .float-1 { bottom: -20px; left: -40px; animation: float 6s ease-in-out infinite; }
     .float-2 { top: 20px; right: -40px; animation: float 8s ease-in-out infinite reverse; }
-    .float-icon { font-size: 1.5rem; }
+    .float-icon { display: flex; align-items: center; }
     .float-val { font-size: 0.875rem; font-weight: 700; color: #fff; }
     .float-lab { font-size: 0.7rem; color: rgba(255,255,255,0.45); }
     /* Scroll */
@@ -333,9 +351,9 @@ import { CommonModule } from '@angular/common';
 })
 export class HeroComponent {
   kpis = [
-    { icon: '💳', value: '2.35M', label: 'CA Mensuel', trend: '+18%', up: true, color: '#6366f1' },
-    { icon: '🛒', value: '142', label: 'Ventes', trend: '+7%', up: true, color: '#22c55e' },
-    { icon: '👥', value: '8', label: 'Employés', trend: '+2', up: true, color: '#f59e0b' }
+    { icon: 'revenue', value: '2.35M', label: 'CA Mensuel', trend: '+18%', up: true, color: '#6366f1' },
+    { icon: 'sales', value: '142', label: 'Ventes', trend: '+7%', up: true, color: '#22c55e' },
+    { icon: 'users', value: '8', label: 'Employés', trend: '+2', up: true, color: '#f59e0b' }
   ];
 
   chartBars = [45, 62, 38, 80, 55, 90, 48, 72, 65, 88, 70, 95];

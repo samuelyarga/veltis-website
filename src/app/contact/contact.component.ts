@@ -19,7 +19,17 @@ import { FormsModule } from '@angular/forms';
         <div class="contact-methods">
           @for (m of methods; track m.label) {
             <div class="method">
-              <div class="method-icon">{{ m.icon }}</div>
+              <div class="method-icon">
+              @if (m.icon === 'phone') {
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#22c55e"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              }
+              @if (m.icon === 'mail') {
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#6366f1"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              }
+              @if (m.icon === 'map-pin') {
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#f59e0b"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              }
+            </div>
               <div>
                 <div class="method-label">{{ m.label }}</div>
                 <div class="method-val">{{ m.val }}</div>
@@ -109,7 +119,9 @@ import { FormsModule } from '@angular/forms';
           </form>
         } @else {
           <div class="success-msg">
-            <div class="success-icon">🎉</div>
+          <div class="success-icon">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:#22c55e"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
             <h3>Message envoyé !</h3>
             <p>Merci pour votre intérêt. Nous vous contacterons dans les 24 heures.</p>
             <button class="btn-reset" (click)="reset()">Envoyer un autre message</button>
@@ -140,7 +152,7 @@ import { FormsModule } from '@angular/forms';
       padding: 1rem; background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
     }
-    .method-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .method-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .method-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
     .method-val { font-size: 0.9rem; font-weight: 600; color: #fff; }
     .contact-deco { display: flex; flex-direction: column; gap: 0.75rem; }
@@ -196,7 +208,7 @@ import { FormsModule } from '@angular/forms';
     }
     @keyframes spin { to { transform: rotate(360deg); } }
     .success-msg { text-align: center; padding: 3rem 1rem; }
-    .success-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .success-icon { display: flex; justify-content: center; margin-bottom: 1rem; }
     .success-msg h3 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
     .success-msg p { color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 2rem; }
     .btn-reset {
@@ -222,9 +234,9 @@ export class ContactComponent {
   form = { nom: '', tel: '', email: '', activite: '', version: '', message: '' };
 
   methods = [
-    { icon: '📱', label: 'WhatsApp / Téléphone', val: '+226 76 99 69 00 / +226 53 44 37 12' },
-    { icon: '📧', label: 'Email', val: 'yargasamuel48@gmail.com' },
-    { icon: '📍', label: 'Localisation', val: 'Ouagadougou, Burkina Faso' },
+    { icon: 'phone', label: 'WhatsApp / Téléphone', val: '+226 76 99 69 00 / +226 53 44 37 12' },
+    { icon: 'mail', label: 'Email', val: 'yargasamuel48@gmail.com' },
+    { icon: 'map-pin', label: 'Localisation', val: 'Ouagadougou, Burkina Faso' },
   ];
 
   submit() {

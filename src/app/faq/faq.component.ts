@@ -37,7 +37,9 @@ import { CommonModule } from '@angular/common';
 
       <!-- Bloc contact rapide -->
       <div class="faq-contact">
-        <div class="faq-contact-icon">💬</div>
+        <div class="faq-contact-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:#a5b4fc"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
         <h3>Vous avez d'autres questions ?</h3>
         <p>Notre équipe répond sous 24h. N'hésitez pas à nous contacter directement.</p>
         <div class="faq-contact-btns">
@@ -56,8 +58,14 @@ import { CommonModule } from '@angular/common';
           </a>
         </div>
         <div class="faq-contact-info">
-          <span>📱 76 99 69 00</span>
-          <span>📱 53 44 37 12</span>
+          <span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            76 99 69 00
+          </span>
+          <span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            53 44 37 12
+          </span>
         </div>
       </div>
     </div>
@@ -114,7 +122,7 @@ import { CommonModule } from '@angular/common';
       border-radius: 20px; padding: 2rem;
       text-align: center; position: sticky; top: 5rem;
     }
-    .faq-contact-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .faq-contact-icon { display: flex; justify-content: center; margin-bottom: 1rem; }
     .faq-contact h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
     .faq-contact p { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 1.5rem; }
     .faq-contact-btns { display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 1.25rem; }

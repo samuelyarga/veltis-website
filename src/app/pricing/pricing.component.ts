@@ -19,7 +19,9 @@ import { CommonModule } from '@angular/common';
       <!-- Plan Essentiel -->
       <div class="plan-card">
         <div class="plan-header">
-          <div class="plan-icon">🚀</div>
+          <div class="plan-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#6366f1"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+          </div>
           <div class="plan-name">Veltis Essentiel</div>
           <div class="plan-tagline">Pour démarrer et gérer efficacement</div>
         </div>
@@ -45,9 +47,14 @@ import { CommonModule } from '@angular/common';
 
       <!-- Plan Pro -->
       <div class="plan-card plan-popular">
-        <div class="popular-badge">✨ Recommandé</div>
+        <div class="popular-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Recommandé
+        </div>
         <div class="plan-header">
-          <div class="plan-icon">💎</div>
+          <div class="plan-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:#a5b4fc"><polygon points="6 3 18 3 22 9 12 22 2 9"/><line x1="12" y1="22" x2="12" y2="9"/><polyline points="2 9 6 3 12 9 18 3 22 9"/></svg>
+          </div>
           <div class="plan-name">Veltis Pro</div>
           <div class="plan-tagline">La solution complète avec comptabilité</div>
         </div>
@@ -72,7 +79,20 @@ import { CommonModule } from '@angular/common';
     <div class="garanties">
       @for (g of garanties; track g.label) {
         <div class="garantie">
-          <span class="garantie-icon">{{ g.icon }}</span>
+          <span class="garantie-icon">
+            @if (g.icon === 'lock') {
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#a5b4fc"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            }
+            @if (g.icon === 'wifi-off') {
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#67e8f9"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.56 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            }
+            @if (g.icon === 'tool') {
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#f59e0b"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            }
+            @if (g.icon === 'globe') {
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#22c55e"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            }
+          </span>
           <div>
             <div class="garantie-title">{{ g.label }}</div>
             <div class="garantie-desc">{{ g.desc }}</div>
@@ -130,10 +150,10 @@ import { CommonModule } from '@angular/common';
       padding: 0.35rem 1.25rem;
       background: linear-gradient(135deg, #6366f1, #8b5cf6);
       border-radius: 50px; font-size: 0.78rem; font-weight: 700; color: #fff;
-      white-space: nowrap;
+      white-space: nowrap; display: inline-flex; align-items: center; gap: 0.35rem;
     }
     .plan-header { margin-bottom: 1.5rem; }
-    .plan-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .plan-icon { margin-bottom: 0.75rem; display: flex; }
     .plan-name { font-size: 1.375rem; font-weight: 800; color: #fff; margin-bottom: 0.25rem; }
     .plan-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
     .plan-price {
@@ -175,7 +195,7 @@ import { CommonModule } from '@angular/common';
       padding: 1.25rem; background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.07); border-radius: 14px;
     }
-    .garantie-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .garantie-icon { flex-shrink: 0; display: flex; align-items: center; }
     .garantie-title { font-size: 0.875rem; font-weight: 600; color: #fff; margin-bottom: 0.2rem; }
     .garantie-desc { font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
     @media (max-width: 768px) {
@@ -216,9 +236,9 @@ export class PricingComponent {
   ];
 
   garanties = [
-    { icon: '🔒', label: 'Paiement unique', desc: 'Aucun abonnement. Le logiciel vous appartient.' },
-    { icon: '📡', label: 'Fonctionne hors ligne', desc: 'Installable en local, sans besoin d\'internet.' },
-    { icon: '🛠️', label: '12 mois de support', desc: 'Maintenance et support gratuits la 1ère année.' },
-    { icon: '🌍', label: 'Adapté Afrique', desc: 'SYSCOHADA, FCFA, réalités locales.' },
+    { icon: 'lock', label: 'Paiement unique', desc: 'Aucun abonnement. Le logiciel vous appartient.' },
+    { icon: 'wifi-off', label: 'Fonctionne hors ligne', desc: 'Installable en local, sans besoin d\'internet.' },
+    { icon: 'tool', label: '12 mois de support', desc: 'Maintenance et support gratuits la 1ère année.' },
+    { icon: 'globe', label: 'Adapté Afrique', desc: 'SYSCOHADA, FCFA, réalités locales.' },
   ];
 }
